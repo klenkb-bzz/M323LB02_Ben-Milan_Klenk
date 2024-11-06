@@ -157,20 +157,20 @@ def B3F():
     return f"Das multiplizierte Paar ist: {multiply_pairs(5, 255)}"
 
 
-@app.route("/B3E", methods=['GET'])
+@app.route("/B3E", methods=["GET"])
 def B3E():
     numbers = [5, 12, 33, 44]
 
     def showcase(numbers_list):
         if sum(map(lambda x: x ** 2, numbers_list)) > sum(numbers_list):
-            return 'Greater'
+            return "Greater"
         else:
-            return 'Smaller'
+            return "Smaller"
 
     return showcase(numbers)
 
 
-@app.route("/B4G", methods=['GET'])
+@app.route("/B4G", methods=["GET"])
 def B4G():
     numbers = [786, 2234, 233, 4]
 
@@ -186,11 +186,11 @@ def B4G():
         number_sum = reduce(lambda x, y: x + y, numbers_list)
         return number_sum
 
-    return f'Mapped List: {list(map_func(numbers))}</br>Filtered List: {list(filter_func(numbers))}' \
-           f'<br>Reduced List: {reduce_func(numbers)} '
+    return f"Mapped List: {list(map_func(numbers))}</br>Filtered List: {list(filter_func(numbers))}" \
+           f"<br>Reduced List: {reduce_func(numbers)} "
 
 
-@app.route("/B4F", methods=['GET'])
+@app.route("/B4F", methods=["GET"])
 def B4F():
     numbers = [654, 874, 100, 445, 555]
 
@@ -198,10 +198,10 @@ def B4F():
         square_div_five_sum = reduce(lambda x, y: x + y, filter(lambda x: x % 5 == 0, map(lambda x: x ** 2, numbers_list)))
         return square_div_five_sum
 
-    return f'The Square of all sums that are dividable by 5: {combined_func(numbers)}'
+    return f"The Square of all sums that are dividable by 5: {combined_func(numbers)}"
 
 
-@app.route("/B4E", methods=['GET'])
+@app.route("/B4E", methods=["GET"])
 def B4E():
     json = [
         {
@@ -230,7 +230,7 @@ def B4E():
     return f"Filtern aller Schüler, die bei einer Notenerhöhung von 1 höher als 3.25 sind: {complex_function(json)}"
 
 
-@app.route("/C1G", methods=['GET'])
+@app.route("/C1G", methods=["GET"])
 def C1G():
     def args_sum_all(*args):
         return sum(args)
@@ -254,7 +254,7 @@ def C1G():
     return str(args_sum_all(6, 20, 33, 14))
 
 
-@app.route("/C1F", methods=['GET'])
+@app.route("/C1F", methods=["GET"])
 def C1F():
     def refactored_sum_all(*args):
         return sum(args)
@@ -262,7 +262,7 @@ def C1F():
     return f"Die Summe einer Reihe gegebener Zahlen ist: {str(refactored_sum_all(10, 1122, 33, 514, 541, 87))}"
 
 
-@app.route("/C1E", methods=['GET'])
+@app.route("/C1E", methods=["GET"])
 def C1E():
     def sum_all(x, y, z):
         return x + y + z
@@ -270,9 +270,9 @@ def C1E():
     def refactored_sum_all(*args):
         return sum(args)
 
-    return f"Test ob eine Liste Zahlen gleich gross wie eine andere: {str(refactored_sum_all(33, 12, 32)) if refactored_sum_all(32, 12, 32) == sum_all(33, 12, 32) else str('Test failed')}"
+    return f"Test ob eine Liste Zahlen gleich gross wie eine andere: {str(refactored_sum_all(33, 12, 32)) if refactored_sum_all(32, 12, 32) == sum_all(33, 12, 32) else '[Error]: Test Failed'}"
 
-    # Gewollte Ausgabe: "Test failed"
+    # Gewollte Ausgabe: "Test Failed"
 
 
 if __name__ == "__main__":
