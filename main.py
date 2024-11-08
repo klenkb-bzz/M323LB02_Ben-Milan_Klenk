@@ -11,10 +11,17 @@ def home():
 
 @app.route("/A1G", methods=["GET"])
 def A1G():
+    value1 = 5
+    value2 = 6
+    value3 = 7
+
     def pure(x, y, z):
         return str(x + y + z)
 
-    return f"Sum of x, y and z: {pure(5, 6, 7)}"
+    sum_of_3_digits = pure(value1, value3, value3)
+
+    return f"Sum of x, y and z: {sum_of_3_digits}" \
+           f"<br>x: {value1} y: {value2} z: {value3}"
 
 
 @app.route("/A1F", methods=["GET"])
@@ -28,6 +35,7 @@ def A1F():
             return error
 
     return f"Output: {adding_items(the_tupel, 22)}"
+    # Output: can only concatenate tuple (not "int") to tuple
 
 
 @app.route("/A1E", methods=["GET"])
@@ -150,24 +158,29 @@ def B3G():
 
 @app.route("/B3F", methods=["GET"])
 def B3F():
+
+    is_in_range_of = lambda x, y, range: range[0] <= x + y <= range[1]
+
+    test = is_in_range_of(2,3,[2,3])
     def multiply_pairs(num1, num2):
-        new_nums = lambda x, y: x*y
+        new_nums = lambda x, y: x * y
         return new_nums(num1, num2)
 
-    return f"Das multiplizierte Paar ist: {multiply_pairs(5, 255)}"
+    return f"Das multiplizierte Paar ist: {multiply_pairs(5, 255)} <br>Ist in Bereich: {test}"
 
 
 @app.route("/B3E", methods=["GET"])
 def B3E():
-    numbers = [5, 12, 33, 44]
+    case1 = [5, 12, 33, 44]
+    case2 = [3, 4, 5, 2]
 
-    def showcase(numbers_list):
-        if sum(map(lambda x: x ** 2, numbers_list)) > sum(numbers_list):
+    def showcase(lst):
+        if sum(map(lambda x: (x ** 2)/2, lst)) > sum(lst)*2:
             return "Greater"
         else:
             return "Smaller"
 
-    return showcase(numbers)
+    return showcase(case2)
 
 
 @app.route("/B4G", methods=["GET"])
@@ -195,7 +208,8 @@ def B4F():
     numbers = [654, 874, 100, 445, 555]
 
     def combined_func(numbers_list):
-        square_div_five_sum = reduce(lambda x, y: x + y, filter(lambda x: x % 5 == 0, map(lambda x: x ** 2, numbers_list)))
+        square_div_five_sum = reduce(lambda x, y: x + y,
+                                     filter(lambda x: x % 5 == 0, map(lambda x: x ** 2, numbers_list)))
         return square_div_five_sum
 
     return f"The Square of all sums that are dividable by 5: {combined_func(numbers)}"
